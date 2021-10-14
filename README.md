@@ -69,5 +69,5 @@ json.toString() // will return json string
 
 ### Modules
 
-* [kon](./) - wrapper module
+* [kon](./README.md) - wrapper module
 * [kon-core](./lib/kon-core) - core implementation module
