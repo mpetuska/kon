@@ -9,7 +9,7 @@ Lightweight kotlin MPP DSL for building JSON trees
 
 Just drop the dependency in your `commonMain` sourceSet
 
-```kotin
+```kotlin
 kotlin {
   sourceSets {
     commonMain {
