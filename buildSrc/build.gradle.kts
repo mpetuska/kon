@@ -15,4 +15,5 @@ dependencies {
   implementation("org.jetbrains.kotlin:kotlin-serialization:_")
   implementation("org.jlleitschuh.gradle:ktlint-gradle:_")
   implementation("io.github.gradle-nexus:publish-plugin:_")
+  implementation("dev.petuska:klip-gradle-plugin:_")
 }

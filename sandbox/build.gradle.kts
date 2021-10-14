@@ -16,6 +16,6 @@ application {
 }
 
 dependencies {
-  implementation("dev.petuska:template-kmp-library")
+  implementation("dev.petuska:kon")
   testImplementation("dev.petuska:test")
 }

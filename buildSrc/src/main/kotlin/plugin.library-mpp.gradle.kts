@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.gradle.tasks.AbstractKotlinNativeCompile
 import org.jetbrains.kotlin.gradle.tasks.CInteropProcess
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.kotlin.konan.target.HostManager
-import util.KotlinTargetDetails
 import util.buildHost
 import util.nativeTargetGroup
 
@@ -11,6 +10,7 @@ plugins {
   kotlin("multiplatform")
   kotlin("plugin.serialization")
   id("plugin.common")
+  id("dev.petuska.klip")
 }
 
 kotlin {
@@ -99,19 +99,6 @@ kotlin {
     mingwX86(),
     mingwX64(),
   )
-
-  val targetsWithCoroutines = KotlinTargetDetails.values()
-    .filter(KotlinTargetDetails::hasCoroutines)
-    .map(KotlinTargetDetails::presetName)
-
-  targets.filter { it.preset?.name in targetsWithCoroutines }
-    .forEach {
-      it.compilations["main"].defaultSourceSet {
-        dependencies {
-          api("org.jetbrains.kotlinx:kotlinx-coroutines-core:_")
-        }
-      }
-    }
 }
 
 tasks {

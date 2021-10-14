@@ -3,9 +3,12 @@ plugins {
   id("com.gradle.enterprise") version "3.7"
 }
 
-rootProject.name = "template-kmp-library"
+rootProject.name = "kon"
 include(":test")
 include(
-  ":lib:template-kmp-library-core",
-  ":lib:template-kmp-library-dsl"
+  ":lib:kon-core",
 )
+
+refreshVersions {
+  extraArtifactVersionKeyRules(rootDir.resolve("versions.rules"))
+}
