@@ -1,8 +1,8 @@
 package local.test
 
+import kotlin.coroutines.EmptyCoroutineContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.promise
-import kotlin.coroutines.EmptyCoroutineContext
 
 actual typealias CoroutineScope = CoroutineScope
 
