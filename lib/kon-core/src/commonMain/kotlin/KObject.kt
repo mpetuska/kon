@@ -3,66 +3,22 @@ package dev.petuska.kon
 import dev.petuska.kon.util.toJson
 
 /**
- * A wrapper around [MutableMap] to represent a JSON object.
+ * A [MutableMap] to represent a JSON object.
  */
-public typealias ObjectMap = MutableMap<String, Any?>
+public typealias KON = MutableMap<String, Any?>
 
 /**
- * A wrapper around [ObjectMap] to represent a JSON object
+ * A wrapper around [MutableMap] to represent a JSON object
  */
-public interface KObject : ObjectMap {
+public interface KObject : KON {
   /**
    * Adds a field
    * @receiver field name
    * @param value field value
-   */
-  @KONSetterDsl
-  public infix fun String.by(value: Any?) {
-    this@KObject[this] = value
-  }
-
-  /**
-   * Adds a field
-   * @receiver field name
-   * @param value field value
-   * @see [by]
    */
   @KONSetterDsl
   public infix fun String.to(value: Any?) {
-    this by value
-  }
-
-  /**
-   * Adds a field
-   * @receiver field name
-   * @param value field value
-   * @see [by]
-   */
-  @KONSetterDsl
-  public operator fun String.plusAssign(value: Any?) {
-    this by value
-  }
-
-  /**
-   * Adds a field
-   * @receiver field name
-   * @param value field value
-   * @see [by]
-   */
-  @KONSetterDsl
-  public operator fun String.rangeTo(value: Any?) {
-    this by value
-  }
-
-  /**
-   * Adds a field
-   * @receiver field name
-   * @param value field value
-   * @see [by]
-   */
-  @KONSetterDsl
-  public operator fun String.rem(value: Any?) {
-    this by value
+    this@KObject[this] = value
   }
 
   /**
@@ -112,9 +68,6 @@ public interface KObject : ObjectMap {
  * @param obj object builder
  */
 @KONBuilderDsl
-public fun kobj(obj: KObject.() -> Unit): KObject {
-  val map: ObjectMap = mutableMapOf()
-  return object : KObject, ObjectMap by map {
-    override fun toString(): String = toJson()
-  }.apply(obj)
-}
+public inline fun kobj(obj: KObject.() -> Unit): KObject = object : KObject, KON by mutableMapOf() {
+  override fun toString(): String = toJson()
+}.apply(obj)

@@ -3,7 +3,7 @@ package dev.petuska.kon
 import dev.petuska.kon.util.toJson
 
 /**
- * A wrapper around [MutableList] to represent a JSON object.
+ * A [MutableList] to represent a JSON object.
  */
 public interface KArray<T> : MutableList<T>
 

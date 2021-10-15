@@ -39,19 +39,20 @@ representation of the underlying structure. Currently, supported kotlin types fo
 * Triple
 
 ```kotlin
-val json: ObjectMap = kobj {
-  "str" by "string"
-  "number"..1
-  "boolean" % true
+val json: KON = kobj {
+  "str" to "string"
+  "number" to 1
+  "boolean" to true
   "object" {
-    "str" += "string"
-    "pair" to (1 to "2")
-    "triple" by Triple(true, false, null)
-    "boolean" += true
+    "str" to "string"
+    "number" to 1
+    "pair" to (1 to null)
+    "triple" to Triple(1, "2", 3)
+    "boolean" to true
     "withArray"[1, "2"]
     "nested" {
-      "stillGood" by true
-      "nullable" by null
+      "stillGood" to true
+      "nullable" to null
     }
   }
   "array"[
@@ -60,7 +61,7 @@ val json: ObjectMap = kobj {
       true,
       karr[1, "2", false],
       kobj {
-        "inner" += true
+        "inner" to true
       }
   ]
 }
@@ -71,3 +72,4 @@ json.toString() // will return json string
 
 * [kon](./README.md) - wrapper module
 * [kon-core](./lib/kon-core) - core implementation module
+* [kon-serialization](./lib/kon-serialization) - kotlinx-serialization interop module

@@ -7,6 +7,7 @@ rootProject.name = "kon"
 include(":test")
 include(
   ":lib:kon-core",
+  ":lib:kon-serialization",
 )
 
 refreshVersions {
