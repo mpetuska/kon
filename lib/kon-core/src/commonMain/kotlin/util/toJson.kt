@@ -1,10 +1,12 @@
 package dev.petuska.kon.util
 
+@Suppress("NOTHING_TO_INLINE")
 private inline fun Any?.toJsonString(): String = """"$this""""
 
 @PublishedApi
 internal fun Any?.toJson(): String = when (this) {
-  this == null -> "null"
+  is Number?,
+  is Boolean? -> "$this"
   is String -> toJsonString()
   is Pair<*, *> -> """[${first.toJson()},${second.toJson()}]"""
   is Triple<*, *, *> -> """[${first.toJson()},${second.toJson()},${third.toJson()}]"""

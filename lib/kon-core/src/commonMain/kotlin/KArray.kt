@@ -13,6 +13,7 @@ public interface KArray<T> : MutableList<T>
  * @param items array value items
  */
 @KONBuilderDsl
+@Suppress("NOTHING_TO_INLINE")
 public inline fun <T> karr(vararg items: T): KArray<T> = object : KArray<T>, MutableList<T> by mutableListOf(*items) {
   override fun toString(): String = toJson()
 }
