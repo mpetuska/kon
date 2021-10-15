@@ -1,13 +1,16 @@
 package dev.petuska.kon
 
 import dev.petuska.klip.api.assertKlip
+import dev.petuska.kon.serialization.toJsonObject
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import local.test.BlockingTest
 import kotlin.test.Test
 
-class KObjectTest : BlockingTest {
+class ToJsonObjectTest : BlockingTest {
   @Test
   fun test() = blockingTest {
-    val json: KON = kobj {
+    val kon: KON = kobj {
       "str" to "string"
       "number" to 1
       "boolean" to true
@@ -33,6 +36,7 @@ class KObjectTest : BlockingTest {
         }
       ]
     }
-    json.assertKlip()
+    val jsonObject = kon.toJsonObject()
+    Json.encodeToString(jsonObject).assertKlip()
   }
 }

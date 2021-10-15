@@ -29,7 +29,7 @@ tasks {
   withType<Test> {
     useJUnitPlatform()
   }
-
+  
   afterEvaluate {
     if (tasks.findByName("compile") == null) {
       register("compile") {

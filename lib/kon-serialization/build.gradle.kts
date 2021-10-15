@@ -1,5 +1,5 @@
 plugins {
-  id("plugin.library-mpp")
+  id("plugin.library-serialization")
   id("plugin.publishing-mpp")
 }
 
@@ -9,7 +9,7 @@ kotlin {
   sourceSets {
     commonMain {
       dependencies {
-        api("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
+        api(project(":lib:kon-core"))
       }
     }
   }

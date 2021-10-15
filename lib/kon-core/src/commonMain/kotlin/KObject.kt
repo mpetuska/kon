@@ -38,7 +38,7 @@ public interface KObject : KON {
    */
   @KONSetterDsl
   public operator fun String.invoke(obj: KObject.() -> Unit) {
-    this@KObject[this] = kobj(obj)
+    this@KObject[this] = kobj(obj = obj)
   }
 
   /**
@@ -68,6 +68,6 @@ public interface KObject : KON {
  * @param obj object builder
  */
 @KONBuilderDsl
-public inline fun kobj(obj: KObject.() -> Unit): KObject = object : KObject, KON by mutableMapOf() {
+public inline fun kobj(base: KON = mutableMapOf(), obj: KObject.() -> Unit): KObject = object : KObject, KON by base {
   override fun toString(): String = toJson()
 }.apply(obj)

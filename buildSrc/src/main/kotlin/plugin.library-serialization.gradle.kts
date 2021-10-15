@@ -1,34 +1,35 @@
+import org.gradle.kotlin.dsl.invoke
 import util.nativeTargetGroup
 
 plugins {
   kotlin("multiplatform")
+  kotlin("plugin.serialization")
   id("plugin.common")
   id("plugin.library-common")
   id("dev.petuska.klip")
 }
 
 kotlin {
+  sourceSets {
+    commonMain {
+      dependencies {
+        api("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
+      }
+    }
+  }
   jvm()
   js {
     useCommonJs()
     nodejs()
   }
-
-  nativeTargetGroup(
-    "androidNdk",
-    androidNativeArm32(),
-    androidNativeArm64(),
-  )
-
+  
   nativeTargetGroup(
     "linux",
     linuxX64(),
-    linuxMips32(),
-    linuxMipsel32(),
     linuxArm64(),
     linuxArm32Hfp(),
   )
-
+  
   nativeTargetGroup(
     "ios",
     iosArm32(),
@@ -36,7 +37,7 @@ kotlin {
     iosX64(),
     iosSimulatorArm64(),
   )
-
+  
   nativeTargetGroup(
     "watchos",
     watchosArm32(),
@@ -45,20 +46,20 @@ kotlin {
     watchosX64(),
     watchosSimulatorArm64(),
   )
-
+  
   nativeTargetGroup(
     "tvos",
     tvosArm64(),
     tvosX64(),
     tvosSimulatorArm64(),
   )
-
+  
   nativeTargetGroup(
     "macos",
     macosX64(),
     macosArm64(),
   )
-
+  
   nativeTargetGroup(
     "mingw",
     mingwX86(),
