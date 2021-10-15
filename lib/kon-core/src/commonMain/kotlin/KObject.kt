@@ -24,7 +24,7 @@ public interface KObject : KON {
    */
   @KONSetterDsl
   public operator fun String.get(vararg items: Any?) {
-    this@KObject[this] = karr(*items)
+    this@KObject[this] = karr(items = items)
   }
 
   /**
@@ -44,7 +44,10 @@ public interface KObject : KON {
      * @param items array value items
      * @return built array
      */
-    @KONBuilderDsl public operator fun <T> get(vararg items: T): KArray<T> = karr(*items)
+    @KONBuilderDsl
+    public operator fun <T> get(vararg items: T): KArray<T> {
+      return karr(items = items)
+    }
   }
 
   /** Array builder hook. Useless by its own... */
@@ -59,7 +62,7 @@ public interface KObject : KON {
  */
 @KONBuilderDsl
 public inline fun kobj(base: KON = mutableMapOf(), obj: KObject.() -> Unit): KObject =
-  object : KObject, KON by base {
-      override fun toString(): String = toJson()
-    }
-    .apply(obj)
+    object : KObject, KON by base {
+          override fun toString(): String = toJson()
+        }
+        .apply(obj)

@@ -2,7 +2,6 @@ package dev.petuska.kon
 
 import dev.petuska.klip.api.assertKlip
 import dev.petuska.kon.serialization.toKObject
-import kotlin.test.Test
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.add
@@ -13,6 +12,7 @@ import kotlinx.serialization.json.put
 import kotlinx.serialization.json.putJsonArray
 import kotlinx.serialization.json.putJsonObject
 import local.test.BlockingTest
+import kotlin.test.Test
 
 class ToKObjectTest : BlockingTest {
   @Test

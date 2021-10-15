@@ -1,7 +1,5 @@
-import de.fayard.refreshVersions.core.versionFor
 import org.jetbrains.kotlin.gradle.tasks.AbstractKotlinCompile
 import org.jetbrains.kotlin.gradle.tasks.KotlinTest
-import util.by
 
 plugins {
   id("com.ncorti.ktfmt.gradle")
@@ -21,7 +19,7 @@ idea {
 }
 
 ktfmt {
-  googleStyle()
+//  googleStyle()
 }
 
 tasks {
