@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinTest
 import util.by
 
 plugins {
-  id("org.jlleitschuh.gradle.ktlint")
+  id("com.ncorti.ktfmt.gradle")
   idea
 }
 
@@ -20,9 +20,8 @@ idea {
   }
 }
 
-ktlint {
-  version by versionFor("version.ktlint")
-  additionalEditorconfigFile.set(rootDir.resolve(".editorconfig"))
+ktfmt {
+  googleStyle()
 }
 
 tasks {
@@ -37,8 +36,8 @@ tasks {
         group = "build"
       }
     }
-    if (tasks.findByName("test") == null) {
-      register("test") {
+    if (tasks.findByName("allTests") == null) {
+      register("allTests") {
         dependsOn(withType(KotlinTest::class))
         group = "verification"
       }

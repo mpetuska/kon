@@ -19,31 +19,27 @@ import kotlinx.serialization.json.intOrNull
  * @return converted [KObject]
  */
 public fun JsonObject.toKObject(): KObject = kobj {
-  this@toKObject.entries.forEach { (k, v) ->
-    k to v.toKElement()
-  }
+  this@toKObject.entries.forEach { (k, v) -> k to v.toKElement() }
 }
 
-private fun JsonElement?.toKElement(): Any? = when (this) {
-  is JsonNull? -> null
-  is JsonPrimitive -> {
-    if (this.isString) {
-      this.contentOrNull
-    } else {
-      booleanOrNull ?: contentOrNull?.let {
-        if (it.contains(".")) {
-          doubleOrNull
-        } else {
-          intOrNull
-        }
+private fun JsonElement?.toKElement(): Any? =
+  when (this) {
+    is JsonNull? -> null
+    is JsonPrimitive -> {
+      if (this.isString) {
+        this.contentOrNull
+      } else {
+        booleanOrNull
+          ?: contentOrNull?.let {
+            if (it.contains(".")) {
+              doubleOrNull
+            } else {
+              intOrNull
+            }
+          }
       }
     }
+    is JsonArray -> karr(*map(JsonElement?::toKElement).toTypedArray())
+    is JsonObject -> kobj { this@toKElement.entries.forEach { (k, v) -> k to v.toKElement() } }
+    else -> error("${this!!::class} is not a valid KON element")
   }
-  is JsonArray -> karr(*map(JsonElement?::toKElement).toTypedArray())
-  is JsonObject -> kobj {
-    this@toKElement.entries.forEach { (k, v) ->
-      k to v.toKElement()
-    }
-  }
-  else -> error("${this!!::class} is not a valid KON element")
-}

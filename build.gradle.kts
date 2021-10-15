@@ -8,8 +8,8 @@ plugins {
 gitHooks {
   setHooks(
     mapOf(
-      "pre-commit" to "ktlintFormat",
-      "pre-push" to "ktlintCheck"
+      "pre-commit" to "ktfmtFormat",
+      "pre-push" to "ktfmtCheck"
     )
   )
 }

@@ -2,10 +2,10 @@ package dev.petuska.kon
 
 import dev.petuska.klip.api.assertKlip
 import dev.petuska.kon.serialization.toJsonObject
+import kotlin.test.Test
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import local.test.BlockingTest
-import kotlin.test.Test
 
 class ToJsonObjectTest : BlockingTest {
   @Test
@@ -26,15 +26,7 @@ class ToJsonObjectTest : BlockingTest {
           "nullable" to null
         }
       }
-      "array"[
-        1,
-        "2",
-        true,
-        karr[1, "2", false],
-        kobj {
-          "inner" to true
-        }
-      ]
+      "array"[1, "2", true, karr[1, "2", false], kobj { "inner" to true }]
     }
     val jsonObject = kon.toJsonObject()
     Json.encodeToString(jsonObject).assertKlip()
