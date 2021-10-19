@@ -6,6 +6,7 @@ out/
 dist/
 local.properties
 lint.xml
+tmp-*
 *.hprof
 *.out
 *.log
