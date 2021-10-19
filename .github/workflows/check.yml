@@ -1,7 +1,4 @@
 name: Check
-defaults:
-  run:
-    shell: bash
 
 on:
   pull_request:
