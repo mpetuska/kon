@@ -57,7 +57,7 @@ public interface KObject : KON {
       map[key] = karr(items = items)
     }
   }
-  
+
   /** Array builder hook. Useless by its own... */
   @KONBuilderDsl
   public val String.to: TO
