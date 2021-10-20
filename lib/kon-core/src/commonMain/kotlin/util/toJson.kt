@@ -18,7 +18,8 @@ internal fun Any?.toJson(): String =
       else -> {
         this?.let {
           println(
-              "WARNING: ${it::class.simpleName} is not recognised JSON type. KON will serialize it as JSON string")
+              "WARNING: ${it::class.simpleName} is not recognised JSON type. KON will serialize it as JSON string"
+          )
         }
         toJsonString()
       }
