@@ -2,16 +2,9 @@ plugins {
   id("plugin.library-mpp")
   id("plugin.publishing-nexus")
   id("plugin.publishing-mpp")
-  id("com.github.jakemarsden.git-hooks")
-}
-
-gitHooks {
-  setHooks(
-    mapOf(
-      "pre-commit" to "ktfmtFormat",
-      "pre-push" to "ktfmtCheck"
-    )
-  )
+  if (System.getenv("CI") == null) {
+    id("plugin.git-hooks")
+  }
 }
 
 gradleEnterprise {

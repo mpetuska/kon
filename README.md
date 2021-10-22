@@ -32,6 +32,7 @@ representation of the underlying structure. Currently, supported kotlin types fo
 * KObject
 * KArray
 * Number
+* Unsigned Number
 * String
 * Boolean
 * null

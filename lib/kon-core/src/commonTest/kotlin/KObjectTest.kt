@@ -1,8 +1,8 @@
 package dev.petuska.kon
 
 import dev.petuska.klip.api.assertKlip
-import kotlin.test.Test
 import local.test.BlockingTest
+import kotlin.test.Test
 
 class KObjectTest : BlockingTest {
   @Test
@@ -27,6 +27,24 @@ class KObjectTest : BlockingTest {
       "array"[1, "2", true, karr[1, "2", false], kobj { "inner" to true }]
       "singleIntArray".to[1]
       "singleIntArray2" to karr[1]
+    }
+    json.assertKlip()
+  }
+
+  @Test
+  fun arrays() {
+    val json = kobj {
+      "a1" to (1)
+      "a2".to[2]
+      "a3"[3, 3]
+      "a4"["4"]
+      "a5"[null]
+      "a6"[true]
+      "a7"[false]
+      "a8"[8L]
+      "a9"[9.0f]
+      "a10"[10.0]
+      "a11"[11u]
     }
     json.assertKlip()
   }

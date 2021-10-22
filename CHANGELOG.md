@@ -4,6 +4,7 @@
 * New object setter `"key" to {}` to allow consistent usage with value keys 
 * New helper `KON::toJS: Json` to convert KON objects to plain JS objects on js sourceSets
 * `karr` array builder moved out of `KObject` interface
+* unsigned number support for stringification
 
 # v1.1.0
 ## Breaking Changes

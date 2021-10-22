@@ -1,4 +1,6 @@
 :::::>> KLIPS :::::>>
+:::::>>dev.petuska.kon.KObjectTest.arrays#0:::::>>
+{"a1":1,"a2":[2],"a3":[3,3],"a4":["4"],"a5":[null],"a6":[true],"a7":[false],"a8":[8],"a9":[9.0],"a10":[10.0],"a11":[11]}
 :::::>>dev.petuska.kon.KObjectTest.test#0:::::>>
 {"str":"string","number":420,"boolean":true,"object":{"str":"string","number":1,"pair":[1,null],"triple":[1,"2",3],"boolean":true,"withArray":[1,"2"],"nested":{"stillGood":true,"nullable":null}},"consistentObject":{"nice?":69},"array":[1,"2",true,[1,"2",false],{"inner":true}],"singleIntArray":[1],"singleIntArray2":[1]}
 :::::>>:::::>>:::::>>

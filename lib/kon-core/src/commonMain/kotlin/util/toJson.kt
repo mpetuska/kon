@@ -5,7 +5,7 @@ package dev.petuska.kon.util
 @PublishedApi
 internal fun Any?.toJson(): String =
     when (this) {
-      is Number?, is Boolean? -> "$this"
+      is UInt, is UByte, is ULong, is UShort, is Number?, is Boolean? -> "$this"
       is String -> toJsonString()
       is Pair<*, *> -> """[${first.toJson()},${second.toJson()}]"""
       is Triple<*, *, *> -> """[${first.toJson()},${second.toJson()},${third.toJson()}]"""

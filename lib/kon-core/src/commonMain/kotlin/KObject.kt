@@ -39,6 +39,9 @@ public interface KObject : KON {
 
   /**
    * Adds an array field
+   *
+   * NOTE: This will not work when declaring an array with a single integer inside. For those cases
+   * use invoke function `"key".to[1]`
    * @receiver field name
    * @param items array value items
    */
