@@ -2,6 +2,7 @@
 ## Changes
 * New safe array setter `"key".to[1]` that works with single int arrays
 * New object setter `"key" to {}` to allow consistent usage with value keys 
+* New helper `KON::toJS: Json` to convert KON objects to plain JS objects on js sourceSets
 * `karr` array builder moved out of `KObject` interface
 
 # v1.1.0

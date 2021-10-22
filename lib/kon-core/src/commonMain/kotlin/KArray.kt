@@ -27,6 +27,16 @@ public object KARR {
   public operator fun <T> get(vararg items: T): KArray<T> {
     return karr(items = items)
   }
+
+  /**
+   * Builds an array
+   * @param items array value items
+   * @return built array
+   */
+  @KONBuilderDsl
+  public operator fun <T> invoke(vararg items: T): KArray<T> {
+    return karr(items = items)
+  }
 }
 
 /** Array builder hook. Useless by its own... */
