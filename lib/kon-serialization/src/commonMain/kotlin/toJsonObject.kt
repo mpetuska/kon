@@ -2,7 +2,6 @@ package dev.petuska.kon.serialization
 
 import dev.petuska.kon.KON
 import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonArray
@@ -19,7 +18,6 @@ public fun KON.toJsonObject(): JsonObject = buildJsonObject {
 
 private fun Any?.toJsonElement(): JsonElement =
     when (this) {
-      this == null -> JsonNull
       is Boolean? -> JsonPrimitive(this)
       is String? -> JsonPrimitive(this)
       is Number? -> JsonPrimitive(this)
