@@ -56,6 +56,15 @@ public interface KObject : KON {
     public operator fun <T> get(vararg items: T) {
       map[key] = karr(items = items)
     }
+
+    /**
+     * Adds an array field
+     * @param items array value items
+     */
+    @KONBuilderDsl
+    public operator fun <T> invoke(vararg items: T) {
+      map[key] = karr(items = items)
+    }
   }
 
   /** Array builder hook. Useless by its own... */
