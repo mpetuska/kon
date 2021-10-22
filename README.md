@@ -28,7 +28,7 @@ representation of the underlying structure. Currently, supported kotlin types fo
 
 * Map
 * Array
-* List
+* Collection
 * KObject
 * KArray
 * Number
@@ -41,7 +41,7 @@ representation of the underlying structure. Currently, supported kotlin types fo
 ```kotlin
 val json: KON = kobj {
   "str" to "string"
-  "number" to 1
+  "number" to 420
   "boolean" to true
   "object" {
     "str" to "string"
@@ -49,11 +49,14 @@ val json: KON = kobj {
     "pair" to (1 to null)
     "triple" to Triple(1, "2", 3)
     "boolean" to true
-    "withArray"[1, "2"]
+    "withArray" [1, "2"]
     "nested" {
       "stillGood" to true
       "nullable" to null
     }
+  }
+  "consistentObject" to {
+    "nice?" to 69
   }
   "array"[
       1,
@@ -64,12 +67,14 @@ val json: KON = kobj {
         "inner" to true
       }
   ]
+  "singleIntArray".to[1]
+  "singleIntArray2" to karr[1]
 }
 json.toString() // will return json string
 ```
 
 ### Modules
 
-* [kon](./README.md) - wrapper module
+* [kon](./README.md) - wrapper module bringing all the other modules as transitive dependencies
 * [kon-core](./lib/kon-core) - core implementation module
 * [kon-serialization](./lib/kon-serialization) - kotlinx-serialization interop module

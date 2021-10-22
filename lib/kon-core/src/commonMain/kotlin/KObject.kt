@@ -18,13 +18,13 @@ public interface KObject : KON {
   }
 
   /**
-   * Adds an array field
+   * Adds an object field
    * @receiver field name
-   * @param items array value items
+   * @param obj object builder
    */
   @KONSetterDsl
-  public operator fun String.get(vararg items: Any?) {
-    this@KObject[this] = karr(items = items)
+  public infix fun String.to(obj: KObject.() -> Unit) {
+    this to kobj(obj = obj)
   }
 
   /**
@@ -34,26 +34,34 @@ public interface KObject : KON {
    */
   @KONSetterDsl
   public operator fun String.invoke(obj: KObject.() -> Unit) {
-    this@KObject[this] = kobj(obj = obj)
+    this to obj
   }
 
-  /** Array builder hook. Useless by its own... */
-  public object ARRAY {
+  /**
+   * Adds an array field
+   * @receiver field name
+   * @param items array value items
+   */
+  @KONSetterDsl
+  public operator fun String.get(vararg items: Any?) {
+    this to karr(items = items)
+  }
+
+  public class TO(private val map: KObject, private val key: String) {
     /**
-     * Builds an array
+     * Adds an array field
      * @param items array value items
-     * @return built array
      */
     @KONBuilderDsl
-    public operator fun <T> get(vararg items: T): KArray<T> {
-      return karr(items = items)
+    public operator fun <T> get(vararg items: T) {
+      map[key] = karr(items = items)
     }
   }
 
   /** Array builder hook. Useless by its own... */
   @KONBuilderDsl
-  public val karr: ARRAY
-    get() = ARRAY
+  public val String.to: TO
+    get() = TO(this@KObject, this)
 }
 
 /**
@@ -61,7 +69,7 @@ public interface KObject : KON {
  * @param obj object builder
  */
 @KONBuilderDsl
-public inline fun kobj(base: KON = mutableMapOf(), obj: KObject.() -> Unit): KObject =
+public inline fun kobj(base: KON = mutableMapOf(), obj: KObject.() -> Unit = {}): KObject =
     object : KObject, KON by base {
           override fun toString(): String = toJson()
         }
