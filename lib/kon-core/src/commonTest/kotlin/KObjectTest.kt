@@ -1,8 +1,8 @@
 package dev.petuska.kon
 
 import dev.petuska.klip.api.assertKlip
-import local.test.BlockingTest
 import kotlin.test.Test
+import local.test.BlockingTest
 
 class KObjectTest : BlockingTest {
   @Test
