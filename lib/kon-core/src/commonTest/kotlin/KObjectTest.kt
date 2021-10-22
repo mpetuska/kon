@@ -42,9 +42,7 @@ class KObjectTest : BlockingTest {
       "a6"[true]
       "a7"[false]
       "a8"[8L]
-      "a9"[9.0f]
-      "a10"[10.0]
-      "a11"[11u]
+      "a9"[9u]
     }
     json.assertKlip()
   }
