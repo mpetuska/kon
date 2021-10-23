@@ -1,6 +1,6 @@
-package dev.petuska.kon
+package dev.petuska.kon.core
 
-import dev.petuska.kon.util.toJson
+import dev.petuska.kon.core.util.toJson
 
 /** A [MutableMap] to represent a JSON object. */
 public typealias KON = TypedKON<Any?>
@@ -59,6 +59,11 @@ public interface KObject : TypedKObject<Any?>, KON {
       map[key] = karr(items = items)
     }
   }
+  
+  /** Array builder hook. Useless by its own... */
+  @KONBuilderDsl
+  public val karr: KARR
+    get() = KARR
 
   /** Array builder hook. Useless by its own... */
   @KONBuilderDsl

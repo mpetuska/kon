@@ -1,4 +1,4 @@
-package dev.petuska.kon
+package dev.petuska.kon.core
 
 import kotlin.js.Json
 import kotlin.js.json

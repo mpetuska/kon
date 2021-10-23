@@ -1,6 +1,6 @@
 package dev.petuska.kon.serialization
 
-import dev.petuska.kon.KON
+import dev.petuska.kon.core.KON
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive

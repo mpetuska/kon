@@ -1,6 +1,6 @@
-package dev.petuska.kon
+package dev.petuska.kon.core
 
-import dev.petuska.kon.util.toJson
+import dev.petuska.kon.core.util.toJson
 
 /** A [MutableList] to represent a JSON object. */
 public interface KArray<T> : MutableList<T>

@@ -1,6 +1,6 @@
-package dev.petuska.kon
+package dev.petuska.kon.core
 
-import dev.petuska.kon.util.toJson
+import dev.petuska.kon.core.util.toJson
 
 /** A [MutableMap] to represent a JSON object. */
 public typealias TypedKON<V> = MutableMap<String, V>

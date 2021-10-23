@@ -1,3 +1,13 @@
+# v1.1.3
+## Build Versions
+* JVM: 11
+* Gradle: 7.2
+* Kotlin: 1.5.31
+## Breaking Changes
+* All `kon-core` module code moved one package up from `dev.petuska.kon` to `dev.petuska.kon.core`
+## Changes
+* Android support (somehow I've missed it initially...)
+
 # v1.1.2
 ## Build Versions
 * JVM: 11

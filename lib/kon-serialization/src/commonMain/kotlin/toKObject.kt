@@ -1,8 +1,8 @@
 package dev.petuska.kon.serialization
 
-import dev.petuska.kon.KObject
-import dev.petuska.kon.karr
-import dev.petuska.kon.kobj
+import dev.petuska.kon.core.KObject
+import dev.petuska.kon.core.karr
+import dev.petuska.kon.core.kobj
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonNull

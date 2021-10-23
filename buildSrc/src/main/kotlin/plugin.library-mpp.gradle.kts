@@ -5,9 +5,19 @@ plugins {
   id("plugin.common")
   id("plugin.library-common")
   id("dev.petuska.klip")
+  id("com.android.library")
+}
+
+android {
+  compileSdkVersion(31)
+  defaultConfig {
+    minSdkVersion(1)
+    targetSdkVersion(31)
+  }
 }
 
 kotlin {
+  android()
   jvm()
   js {
     useCommonJs()

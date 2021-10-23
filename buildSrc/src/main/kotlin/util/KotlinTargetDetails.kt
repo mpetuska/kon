@@ -8,7 +8,7 @@ enum class KotlinTargetDetails(
   val hasCoroutines: Boolean,
 ) {
   JVM("jvm", true),
-  ANDROID("android", false),
+  ANDROID("android", true),
   JS("jsIr", true),
 
   ANDROID_NDK_ARM32("androidNativeArm32", false),

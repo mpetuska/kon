@@ -1,11 +1,12 @@
-package dev.petuska.kon
+package dev.petuska.kon.serialization
 
 import dev.petuska.klip.api.assertKlip
-import dev.petuska.kon.serialization.toJsonObject
-import kotlin.test.Test
+import dev.petuska.kon.core.KON
+import dev.petuska.kon.core.kobj
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import local.test.BlockingTest
+import kotlin.test.Test
 
 class ToJsonObjectTest : BlockingTest {
   @Test

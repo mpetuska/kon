@@ -1,4 +1,4 @@
-package dev.petuska.kon.util
+package dev.petuska.kon.core.util
 
 @Suppress("NOTHING_TO_INLINE") private inline fun Any?.toJsonString(): String = """"$this""""
 

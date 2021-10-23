@@ -12,6 +12,7 @@ kotlin {
         api("dev.petuska:klip:_")
       }
     }
+    named("androidMain") { dependencies { api(kotlin("test-junit5")) } }
     named("jvmMain") { dependencies { api(kotlin("test-junit5")) } }
     named("jsMain") { dependencies { api(kotlin("test-js")) } }
   }
@@ -22,7 +23,8 @@ kotlin {
           .map(util.KotlinTargetDetails::presetName)
 
   targets.filter { it.preset?.name in targetsWithCoroutines }.forEach {
-    it.compilations["main"].defaultSourceSet {
+    (it.compilations.findByName("main")?.defaultSourceSet
+            ?: sourceSets.findByName("${it.name}Main"))?.apply {
       dependencies { api("org.jetbrains.kotlinx:kotlinx-coroutines-core:_") }
     }
   }
