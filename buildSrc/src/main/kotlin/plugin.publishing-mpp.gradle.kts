@@ -15,11 +15,7 @@ plugins {
 
 kotlin {
   fun Collection<KotlinTarget>.onlyBuildIf(enabled: Spec<in Task>) {
-    forEach {
-      it.compilations.all {
-        compileKotlinTask.onlyIf(enabled)
-      }
-    }
+    forEach { it.compilations.all { compileKotlinTask.onlyIf(enabled) } }
   }
 
   fun Collection<Named>.onlyPublishIf(enabled: Spec<in Task>) {
@@ -29,16 +25,14 @@ kotlin {
         publications {
           matching { it.name in publications }.all {
             val targetPublication = this@all
-            tasks.withType<AbstractPublishToMaven>()
-              .matching { it.publication == targetPublication }
-              .configureEach {
-                onlyIf(enabled)
-              }
-            tasks.withType<GenerateModuleMetadata>()
-              .matching { it.publication.get() == targetPublication }
-              .configureEach {
-                onlyIf(enabled)
-              }
+            tasks
+                .withType<AbstractPublishToMaven>()
+                .matching { it.publication == targetPublication }
+                .configureEach { onlyIf(enabled) }
+            tasks
+                .withType<GenerateModuleMetadata>()
+                .matching { it.publication.get() == targetPublication }
+                .configureEach { onlyIf(enabled) }
           }
         }
       }
@@ -56,13 +50,7 @@ kotlin {
   logger.info("Windows host targets: $windowsHostTargets")
   logger.info("Android targets: $androidTargets")
   logger.info("Main host targets: $mainHostTargets")
-  
-  androidTargets.forEach {
-    if (!CI || SANDBOX || isMainHost) {
-      it.publishLibraryVariants("release", "debug")
-    }
-  }
-  
+
   linuxHostTargets.onlyBuildIf { !CI || HostManager.hostIsLinux }
   linuxHostTargets.onlyPublishIf { !CI || HostManager.hostIsLinux }
 
@@ -72,10 +60,12 @@ kotlin {
   windowsHostTargets.onlyBuildIf { !CI || HostManager.hostIsMingw }
   windowsHostTargets.onlyPublishIf { !CI || HostManager.hostIsMingw }
 
-  mainHostTargets.onlyBuildIf {
-    !CI || isMainHost
+  androidTargets.forEach {
+    if (!CI || SANDBOX || isMainHost) {
+      it.publishLibraryVariants("release", "debug")
+    }
   }
-  (mainHostTargets + Named { "kotlinMultiplatform" }).onlyPublishIf {
-    !CI || isMainHost
-  }
+
+  mainHostTargets.onlyBuildIf { !CI || SANDBOX || isMainHost }
+  (mainHostTargets + Named { "kotlinMultiplatform" }).onlyPublishIf { !CI || SANDBOX || isMainHost }
 }
