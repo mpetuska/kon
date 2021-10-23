@@ -4,12 +4,12 @@ plugins {
 }
 
 rootProject.name = "kon"
+
 include(":test")
+
 include(
-  ":lib:kon-core",
-  ":lib:kon-serialization",
+    ":lib:kon-core",
+    ":lib:kon-serialization",
 )
 
-refreshVersions {
-  extraArtifactVersionKeyRules(rootDir.resolve("versions.rules"))
-}
+refreshVersions { extraArtifactVersionKeyRules(rootDir.resolve("versions.rules")) }

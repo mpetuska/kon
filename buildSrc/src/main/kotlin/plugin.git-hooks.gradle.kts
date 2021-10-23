@@ -5,8 +5,8 @@ plugins {
 gitHooks {
   setHooks(
     mapOf(
-      "pre-commit" to "ktfmtFormat",
-      "pre-push" to "ktfmtCheck"
+      "pre-commit" to "spotlessApply",
+      "pre-push" to "spotlessCheck"
     )
   )
 }

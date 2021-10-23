@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.AbstractKotlinCompile
 import org.jetbrains.kotlin.gradle.tasks.KotlinTest
 
 plugins {
-  id("com.ncorti.ktfmt.gradle")
+  id("com.diffplug.spotless")
   idea
 }
 
@@ -18,15 +18,14 @@ idea {
   }
 }
 
-ktfmt {
-//  googleStyle()
+spotless {
+  kotlin { ktfmt() }
+  kotlinGradle { ktfmt() }
 }
 
 tasks {
-  withType<Test> {
-    useJUnitPlatform()
-  }
-  
+  withType<Test> { useJUnitPlatform() }
+
   afterEvaluate {
     if (tasks.findByName("compile") == null) {
       register("compile") {

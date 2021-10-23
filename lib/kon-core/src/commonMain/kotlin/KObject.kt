@@ -3,20 +3,10 @@ package dev.petuska.kon
 import dev.petuska.kon.util.toJson
 
 /** A [MutableMap] to represent a JSON object. */
-public typealias KON = MutableMap<String, Any?>
+public typealias KON = TypedKON<Any?>
 
 /** A wrapper around [MutableMap] to represent a JSON object */
-public interface KObject : KON {
-  /**
-   * Adds a field
-   * @receiver field name
-   * @param value field value
-   */
-  @KONSetterDsl
-  public infix fun String.to(value: Any?) {
-    this@KObject[this] = value
-  }
-
+public interface KObject : TypedKObject<Any?>, KON {
   /**
    * Adds an object field
    * @receiver field name

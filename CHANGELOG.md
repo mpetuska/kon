@@ -1,3 +1,11 @@
+# v1.1.2
+## Build Versions
+* JVM: 11
+* Gradle: 7.2
+* Kotlin: 1.5.31
+## Changes
+* Typesafe versions of `KON` and `KObject` to improve extensibility and allow restricting value types.
+
 # v1.1.1
 ## Changes
 * New safe array setter `"key".to[1]` that works with single int arrays
