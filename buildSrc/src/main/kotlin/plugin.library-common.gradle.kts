@@ -5,24 +5,14 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.kotlin.konan.target.HostManager
 import util.buildHost
 
-plugins {
-  kotlin("multiplatform")
-}
+plugins { kotlin("multiplatform") }
 
 kotlin {
   sourceSets {
     val commonMain by getting
-    val commonTest by getting {
-      dependencies {
-        implementation(project(":test"))
-      }
-    }
-    create("nativeMain") {
-      dependsOn(commonMain)
-    }
-    create("nativeTest") {
-      dependsOn(commonTest)
-    }
+    val commonTest by getting { dependencies { implementation(project(":test")) } }
+    create("nativeMain") { dependsOn(commonMain) }
+    create("nativeTest") { dependsOn(commonTest) }
   }
 
   explicitApi()
@@ -30,20 +20,10 @@ kotlin {
 
 tasks {
   project.properties["org.gradle.project.targetCompatibility"]?.toString()?.let {
-    withType<KotlinCompile> {
-      kotlinOptions {
-        jvmTarget = it
-      }
-    }
+    withType<KotlinCompile> { kotlinOptions { jvmTarget = it } }
   }
-  withType<CInteropProcess> {
-    onlyIf {
-      konanTarget.buildHost == HostManager.host.family
-    }
-  }
+  withType<CInteropProcess> { onlyIf { konanTarget.buildHost == HostManager.host.family } }
   withType<AbstractKotlinNativeCompile<*, *>> {
-    onlyIf {
-      compilation.konanTarget.buildHost == HostManager.host.family
-    }
+    onlyIf { compilation.konanTarget.buildHost == HostManager.host.family }
   }
 }
