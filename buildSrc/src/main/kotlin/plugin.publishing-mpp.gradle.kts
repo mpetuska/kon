@@ -26,13 +26,13 @@ kotlin {
           matching { it.name in publications }.all {
             val targetPublication = this@all
             tasks
-                .withType<AbstractPublishToMaven>()
-                .matching { it.publication == targetPublication }
-                .configureEach { onlyIf(enabled) }
+              .withType<AbstractPublishToMaven>()
+              .matching { it.publication == targetPublication }
+              .configureEach { onlyIf(enabled) }
             tasks
-                .withType<GenerateModuleMetadata>()
-                .matching { it.publication.get() == targetPublication }
-                .configureEach { onlyIf(enabled) }
+              .withType<GenerateModuleMetadata>()
+              .matching { it.publication.get() == targetPublication }
+              .configureEach { onlyIf(enabled) }
           }
         }
       }

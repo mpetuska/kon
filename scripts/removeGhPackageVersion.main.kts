@@ -85,7 +85,6 @@ runBlocking {
       }
       toList()
     }
-
   }
   versions.forEach { (pkg, ver) ->
     if (ver.size > 1) {

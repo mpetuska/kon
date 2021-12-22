@@ -17,27 +17,27 @@ gradleEnterprise {
 kotlin {
   sourceSets { commonMain { dependencies { api(project(":lib:kon-core")) } } }
   val serializationTargets =
-      setOf(
-          linuxX64(),
-          linuxArm64(),
-          linuxArm32Hfp(),
-          iosArm32(),
-          iosArm64(),
-          iosX64(),
-          iosSimulatorArm64(),
-          watchosArm32(),
-          watchosArm64(),
-          watchosX86(),
-          watchosX64(),
-          watchosSimulatorArm64(),
-          tvosArm64(),
-          tvosX64(),
-          tvosSimulatorArm64(),
-          macosX64(),
-          macosArm64(),
-          mingwX86(),
-          mingwX64(),
-      )
+    setOf(
+      linuxX64(),
+      linuxArm64(),
+      linuxArm32Hfp(),
+      iosArm32(),
+      iosArm64(),
+      iosX64(),
+      iosSimulatorArm64(),
+      watchosArm32(),
+      watchosArm64(),
+      watchosX86(),
+      watchosX64(),
+      watchosSimulatorArm64(),
+      tvosArm64(),
+      tvosX64(),
+      tvosSimulatorArm64(),
+      macosX64(),
+      macosArm64(),
+      mingwX86(),
+      mingwX64(),
+    )
 
   serializationTargets.map {
     it.compilations["main"].defaultSourceSet.dependencies { api(project(":lib:kon-serialization")) }

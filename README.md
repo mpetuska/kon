@@ -1,4 +1,5 @@
-[![Dokka docs](https://img.shields.io/badge/docs-dokka-orange?style=flat-square)](http://mpetuska.github.io/kon)
+[![Slack chat](https://img.shields.io/badge/kotlinlang-chat-green?logo=slack&style=flat-square)](https://kotlinlang.slack.com/team/UL1A5BA2X)
+[![Dokka docs](https://img.shields.io/badge/docs-dokka-orange?style=flat-square&logo=kotlin)](http://mpetuska.github.io/kon)
 [![Version maven-central](https://img.shields.io/maven-central/v/dev.petuska/kon?logo=apache-maven&style=flat-square)](https://mvnrepository.com/artifact/dev.petuska/kon/latest)
 
 # Kotlin Object Notation
@@ -71,7 +72,10 @@ val json: KON = kobj {
   "singleIntArray".to[1]
   "singleIntArray2" to karr[1]
 }
-json.toString() // will return json string
+json.toString() // Will return json string
+json.toJS() // Only available on js target. Will return JS Json object
+val jsonObject = json.toJsonObject() // Requires kon-serialization dependency. Will return kotlinx.serialization JsonObject.
+jsonObject.toKObject() // Requires kon-serialization dependency. Will return KON KObject.
 ```
 
 ### Modules

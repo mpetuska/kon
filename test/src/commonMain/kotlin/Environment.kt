@@ -8,9 +8,9 @@ expect object Environment {
 }
 
 operator fun Environment.getValue(thisRef: Nothing?, property: KProperty<*>): String? =
-    get(property.name)
+  get(property.name)
 
 infix fun Environment.or(default: String): ReadOnlyProperty<Nothing?, String> =
-    ReadOnlyProperty { _, property ->
-  Environment[property.name] ?: default
-}
+  ReadOnlyProperty { _, property ->
+    Environment[property.name] ?: default
+  }

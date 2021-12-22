@@ -1,7 +1,7 @@
 package local.sandbox
 
-import local.test.runBlockingTest
 import kotlinx.coroutines.delay
+import local.test.runBlockingTest
 import org.junit.Test
 
 class MainTest {

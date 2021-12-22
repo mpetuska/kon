@@ -59,8 +59,8 @@ public interface KObject : TypedKObject<Any?>, KON {
       map[key] = karr(items = items)
     }
   }
-  
-  /** Array builder hook. Useless by its own... */
+
+/** Array builder hook. Useless by its own... */
   @KONBuilderDsl
   public val karr: KARR
     get() = KARR
@@ -77,7 +77,7 @@ public interface KObject : TypedKObject<Any?>, KON {
  */
 @KONBuilderDsl
 public inline fun kobj(base: KON = mutableMapOf(), obj: KObject.() -> Unit = {}): KObject =
-    object : KObject, KON by base {
-          override fun toString(): String = toJson()
-        }
-        .apply(obj)
+  object : KObject, KON by base {
+    override fun toString(): String = toJson()
+  }
+    .apply(obj)

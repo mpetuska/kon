@@ -24,10 +24,10 @@ public interface TypedKObject<V> : TypedKON<V> {
  */
 @KONBuilderDsl
 public inline fun <V> kobj(
-    base: TypedKON<V> = mutableMapOf(),
-    obj: TypedKObject<V>.() -> Unit = {}
+  base: TypedKON<V> = mutableMapOf(),
+  obj: TypedKObject<V>.() -> Unit = {}
 ): TypedKObject<V> =
-    object : TypedKObject<V>, TypedKON<V> by base {
-          override fun toString(): String = toJson()
-        }
-        .apply(obj)
+  object : TypedKObject<V>, TypedKON<V> by base {
+    override fun toString(): String = toJson()
+  }
+    .apply(obj)

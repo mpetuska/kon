@@ -18,13 +18,15 @@ kotlin {
   }
 
   val targetsWithCoroutines =
-      util.KotlinTargetDetails.values()
-          .filter(util.KotlinTargetDetails::hasCoroutines)
-          .map(util.KotlinTargetDetails::presetName)
+    util.KotlinTargetDetails.values()
+      .filter(util.KotlinTargetDetails::hasCoroutines)
+      .map(util.KotlinTargetDetails::presetName)
 
   targets.filter { it.preset?.name in targetsWithCoroutines }.forEach {
-    (it.compilations.findByName("main")?.defaultSourceSet
-            ?: sourceSets.findByName("${it.name}Main"))?.apply {
+    (
+      it.compilations.findByName("main")?.defaultSourceSet
+        ?: sourceSets.findByName("${it.name}Main")
+      )?.apply {
       dependencies { api("org.jetbrains.kotlinx:kotlinx-coroutines-core:_") }
     }
   }

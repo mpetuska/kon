@@ -22,13 +22,13 @@ afterEvaluate {
       all {
         val targetPublication = this@all
         tasks
-            .withType<AbstractPublishToMaven>()
-            .matching { it.publication == targetPublication }
-            .configureEach { onlyIf(mainHostSpec) }
+          .withType<AbstractPublishToMaven>()
+          .matching { it.publication == targetPublication }
+          .configureEach { onlyIf(mainHostSpec) }
         tasks
-            .withType<GenerateModuleMetadata>()
-            .matching { it.publication.get() == targetPublication }
-            .configureEach { onlyIf(mainHostSpec) }
+          .withType<GenerateModuleMetadata>()
+          .matching { it.publication.get() == targetPublication }
+          .configureEach { onlyIf(mainHostSpec) }
       }
     }
   }

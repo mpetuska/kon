@@ -13,14 +13,14 @@ public fun KON.toJS(): Json {
 }
 
 private fun Any?.toJSElement(): Any? =
-    when (this) {
-      is Long -> toInt()
-      is Boolean?, is String?, is Number? -> this
-      is Array<*> -> Array(size) { this[it].toJSElement() }
-      is Collection<*> -> map { it.toJSElement() }.toTypedArray()
-      is Pair<*, *> -> arrayOf(first.toJSElement(), second.toJSElement())
-      is Triple<*, *, *> -> arrayOf(first.toJSElement(), second.toJSElement(), third.toJSElement())
-      is Map<*, *> ->
-          json(pairs = entries.map { (k, v) -> k.toString() to v.toJSElement() }.toTypedArray())
-      else -> error("${this!!::class} is not a valid Json element")
-    }
+  when (this) {
+    is Long -> toInt()
+    is Boolean?, is String?, is Number? -> this
+    is Array<*> -> Array(size) { this[it].toJSElement() }
+    is Collection<*> -> map { it.toJSElement() }.toTypedArray()
+    is Pair<*, *> -> arrayOf(first.toJSElement(), second.toJSElement())
+    is Triple<*, *, *> -> arrayOf(first.toJSElement(), second.toJSElement(), third.toJSElement())
+    is Map<*, *> ->
+      json(pairs = entries.map { (k, v) -> k.toString() to v.toJSElement() }.toTypedArray())
+    else -> error("${this!!::class} is not a valid Json element")
+  }

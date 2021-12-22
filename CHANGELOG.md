@@ -1,6 +1,17 @@
 # v1.1.3
 ## Build Versions
 * JVM: 11
+* Gradle: 7.3.2
+* Kotlin: 1.6.10
+## Changes
+* Upgraded versions
+  * Kotlin 1.6.10
+  * Serialization 1.3.1
+  * Coroutines 1.6.0
+
+# v1.1.3
+## Build Versions
+* JVM: 11
 * Gradle: 7.2
 * Kotlin: 1.5.31
 ## Breaking Changes
