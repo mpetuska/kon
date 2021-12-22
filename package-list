@@ -1,0 +1,7 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+
+module:kon-core
+dev.petuska.kon.core
+module:kon-serialization
+dev.petuska.kon.serialization
