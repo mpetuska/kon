@@ -1,13 +1,13 @@
 package dev.petuska.kon.core
 
-import dev.petuska.klip.api.assertKlip
-import local.test.BlockingTest
+import dev.petuska.klip.assertions.assertKlip
+import dev.petuska.klip.runner.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class ToJSTest : BlockingTest {
+class ToJSTest {
   @Test
-  fun test() = blockingTest {
+  fun test() = runTest {
     val kon: KON = kobj {
       "str" to "string"
       "number" to 420

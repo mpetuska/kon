@@ -1,4 +1,0 @@
-:::::>> KLIPS :::::>>
-:::::>>type=TEXT:::::>>dev.petuska.kon.serialization.ToJsonObjectTest.test#0:::::>>
-{"str":"string","number":1,"boolean":true,"object":{"str":"string","number":1,"pair":[1,null],"triple":[1,"2",3],"boolean":true,"withArray":[1,"2"],"nested":{"stillGood":true,"nullable":null}},"array":[1,"2",true,[1,"2",false],{"inner":true}]}
-:::::>>:::::>>:::::>>

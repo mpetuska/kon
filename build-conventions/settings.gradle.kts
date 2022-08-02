@@ -16,12 +16,3 @@ refreshVersions {
   versionsPropertiesFile = rootDir.resolve("gradle/versions.properties")
   extraArtifactVersionKeyRules(rootDir.resolve("gradle/versions.rules"))
 }
-
-includeBuild("build-conventions")
-
-rootProject.name = "kon"
-include(":test")
-include(
-  ":lib:kon-core",
-  ":lib:kon-serialization",
-)

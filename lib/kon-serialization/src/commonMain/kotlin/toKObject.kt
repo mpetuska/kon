@@ -22,24 +22,16 @@ public fun JsonObject.toKObject(): KObject = kobj {
   this@toKObject.entries.forEach { (k, v) -> k to v.toKElement() }
 }
 
-private fun JsonElement?.toKElement(): Any? =
-  when (this) {
-    is JsonNull? -> null
-    is JsonPrimitive -> {
-      if (this.isString) {
-        this.contentOrNull
-      } else {
-        booleanOrNull
-          ?: contentOrNull?.let {
-            if (it.contains(".")) {
-              doubleOrNull
-            } else {
-              intOrNull
-            }
-          }
-      }
-    }
-    is JsonArray -> karr(items = map(JsonElement?::toKElement).toTypedArray())
-    is JsonObject -> kobj { this@toKElement.entries.forEach { (k, v) -> k to v.toKElement() } }
-    else -> error("${this!!::class} is not a valid KON element")
+private fun JsonElement?.toKElement(): Any? = when (this) {
+  is JsonNull? -> null
+  is JsonPrimitive -> toKElement()
+  is JsonArray -> karr(items = map(JsonElement?::toKElement).toTypedArray())
+  is JsonObject -> kobj { this@toKElement.entries.forEach { (k, v) -> k to v.toKElement() } }
+  else -> error("${this!!::class} is not a valid KON element")
+}
+
+private fun JsonPrimitive.toKElement(): Any? = if (isString) contentOrNull else {
+  booleanOrNull ?: contentOrNull?.let {
+    if (it.contains(".")) doubleOrNull else intOrNull
   }
+}

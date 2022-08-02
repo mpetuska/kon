@@ -1,10 +1,8 @@
 plugins {
-  id("plugin.library-mpp")
-  id("plugin.publishing-nexus")
-  id("plugin.publishing-mpp")
-  if (System.getenv("CI") == null) {
-    id("plugin.git-hooks")
-  }
+  id("convention.library-mpp")
+  id("convention.publishing-nexus")
+  id("convention.publishing-mpp")
+  if (System.getenv("CI") == null) id("convention.git-hooks")
 }
 
 gradleEnterprise {
@@ -15,29 +13,34 @@ gradleEnterprise {
 }
 
 kotlin {
-  sourceSets { commonMain { dependencies { api(project(":lib:kon-core")) } } }
-  val serializationTargets =
-    setOf(
-      linuxX64(),
-      linuxArm64(),
-      linuxArm32Hfp(),
-      iosArm32(),
-      iosArm64(),
-      iosX64(),
-      iosSimulatorArm64(),
-      watchosArm32(),
-      watchosArm64(),
-      watchosX86(),
-      watchosX64(),
-      watchosSimulatorArm64(),
-      tvosArm64(),
-      tvosX64(),
-      tvosSimulatorArm64(),
-      macosX64(),
-      macosArm64(),
-      mingwX86(),
-      mingwX64(),
-    )
+  sourceSets {
+    commonMain {
+      dependencies {
+        api(project(":lib:kon-core"))
+      }
+    }
+  }
+  val serializationTargets = setOf(
+    linuxX64(),
+    linuxArm64(),
+    linuxArm32Hfp(),
+    iosArm32(),
+    iosArm64(),
+    iosX64(),
+    iosSimulatorArm64(),
+    watchosArm32(),
+    watchosArm64(),
+    watchosX86(),
+    watchosX64(),
+    watchosSimulatorArm64(),
+    tvosArm64(),
+    tvosX64(),
+    tvosSimulatorArm64(),
+    macosX64(),
+    macosArm64(),
+    mingwX86(),
+    mingwX64(),
+  )
 
   serializationTargets.map {
     it.compilations["main"].defaultSourceSet.dependencies { api(project(":lib:kon-serialization")) }
