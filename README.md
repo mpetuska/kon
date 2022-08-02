@@ -80,6 +80,6 @@ jsonObject.toKObject() // Requires kon-serialization dependency. Will return KON
 
 ### Modules
 
-* [kon](./README.md) - wrapper module bringing all the other modules as transitive dependencies
+* [kon](./) - wrapper module bringing all the other modules as transitive dependencies
 * [kon-core](./lib/kon-core) - core implementation module
 * [kon-serialization](./lib/kon-serialization) - kotlinx-serialization interop module

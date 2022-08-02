@@ -79,5 +79,4 @@ public interface KObject : TypedKObject<Any?>, KON {
 public inline fun kobj(base: KON = mutableMapOf(), obj: KObject.() -> Unit = {}): KObject =
   object : KObject, KON by base {
     override fun toString(): String = toJson()
-  }
-    .apply(obj)
+  }.apply(obj)

@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-echo "Not needed yet!"
+sudo apt -y update
+sudo apt -y install curl libcurl4-openssl-dev
+echo "Done"

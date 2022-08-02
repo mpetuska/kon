@@ -1,6 +1,7 @@
 package dev.petuska.kon.serialization
 
-import dev.petuska.klip.api.assertKlip
+import dev.petuska.klip.assertions.assertKlip
+import dev.petuska.klip.runner.runTest
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.add
@@ -10,12 +11,11 @@ import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
 import kotlinx.serialization.json.putJsonArray
 import kotlinx.serialization.json.putJsonObject
-import local.test.BlockingTest
 import kotlin.test.Test
 
-class ToKObjectTest : BlockingTest {
+class ToKObjectTest {
   @Test
-  fun test() = blockingTest {
+  fun test() = runTest {
     val jsonObject: JsonObject = buildJsonObject {
       put("str", "string")
       put("number", 1)
@@ -55,6 +55,6 @@ class ToKObjectTest : BlockingTest {
       }
     }
     val kon = jsonObject.toKObject()
-    kon.assertKlip()
+    kon.toString().assertKlip()
   }
 }

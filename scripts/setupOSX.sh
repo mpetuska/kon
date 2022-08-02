@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-echo "Not needed yet!"
+brew install curl
+echo "Done"

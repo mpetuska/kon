@@ -1,13 +1,13 @@
 package dev.petuska.kon.core
 
-import dev.petuska.klip.api.assertKlip
-import local.test.BlockingTest
+import dev.petuska.klip.assertions.assertKlip
+import dev.petuska.klip.runner.runTest
 import kotlin.test.Test
 
-class KObjectTest : BlockingTest {
+class KObjectTest {
   @Test
-  fun test() = blockingTest {
-    val json: KON = kobj {
+  fun test() = runTest {
+    val kon: KON = kobj {
       "str" to "string"
       "number" to 420
       "boolean" to true
@@ -28,12 +28,12 @@ class KObjectTest : BlockingTest {
       "singleIntArray".to[1]
       "singleIntArray2" to karr[1]
     }
-    json.assertKlip()
+    kon.toString().assertKlip()
   }
 
   @Test
-  fun arrays() {
-    val json = kobj {
+  fun arrays() = runTest {
+    val kon = kobj {
       "a1" to (1)
       "a2".to[2]
       "a3"[3, 3]
@@ -44,6 +44,6 @@ class KObjectTest : BlockingTest {
       "a8"[8L]
       "a9"[9u]
     }
-    json.assertKlip()
+    kon.toString().assertKlip()
   }
 }

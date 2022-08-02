@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-echo "Not needed yet!"
+pacman -Sy curl mingw-w64-x86_64-curl
+echo "Done"

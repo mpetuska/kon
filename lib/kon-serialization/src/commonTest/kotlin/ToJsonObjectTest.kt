@@ -1,16 +1,16 @@
 package dev.petuska.kon.serialization
 
-import dev.petuska.klip.api.assertKlip
+import dev.petuska.klip.assertions.assertKlip
+import dev.petuska.klip.runner.runTest
 import dev.petuska.kon.core.KON
 import dev.petuska.kon.core.kobj
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import local.test.BlockingTest
 import kotlin.test.Test
 
-class ToJsonObjectTest : BlockingTest {
+class ToJsonObjectTest {
   @Test
-  fun test() = blockingTest {
+  fun test() = runTest {
     val kon: KON = kobj {
       "str" to "string"
       "number" to 1
