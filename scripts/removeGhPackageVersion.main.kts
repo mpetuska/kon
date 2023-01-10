@@ -1,6 +1,6 @@
 #!/usr/bin/env kotlin
 
-@file:DependsOn("io.ktor:ktor-client-cio-jvm:1.6.3")
+@file:DependsOn("io.ktor:ktor-client-cio-jvm:1.6.8")
 @file:DependsOn("io.ktor:ktor-client-gson:1.6.3")
 @file:DependsOn("io.ktor:ktor-client-auth-jvm:1.6.3")
 
