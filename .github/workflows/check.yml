@@ -46,7 +46,7 @@ jobs:
             curl
             mingw-w64-x86_64-curl
 
-      - uses: actions/checkout@v3.0.2
+      - uses: actions/checkout@v3.5.3
 
       - name: Restore native library cache
         id: cache-native
